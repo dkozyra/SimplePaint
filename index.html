@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SimplePaint</title>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+        }
+        div {
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            background-color: #000;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let active = false;
+        let draw = function(e){
+            if (active === false) return;
+            let x = e.clientX;
+            let y = e.clientY;
+            let div = document.createElement("div");
+            div.style.top = y + "px";
+            div.style.left = x + "px";
+            document.body.appendChild(div);
+        };
+
+        let drawActive = function(){
+            active = !active;
+        };
+
+        document.body.addEventListener("mousemove", draw);
+        document.body.addEventListener("mousedown", drawActive);
+        document.body.addEventListener("mouseup", drawActive);
+
+    </script>
+</body>
+</html>
